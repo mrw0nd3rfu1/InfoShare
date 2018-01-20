@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.example.msi1.infoshare.MainActivity">
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:paddingBottom="10dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/card_main_background"
+        android:padding="15dp"
+        android:id="@+id/ListLayout">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:transitionName="imageTransition"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/profile_image"
+            android:layout_toRightOf="@+id/profile_image"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="Abhinav Pandey"
+            android:transitionName="nameTransition"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/profile_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/profile_name"
+            android:layout_alignStart="@+id/profile_name"
+            android:layout_below="@+id/profile_name"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="Phone No."
+            android:transitionName="numTransition"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/profile_no"
+            android:layout_alignStart="@+id/profile_no"
+            android:layout_below="@+id/profile_no"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="E-mail"
+            android:transitionName="mailTransition"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ListLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Click Here To Set Your Profile"
+        android:textColor="@android:color/white" />
+</RelativeLayout>
