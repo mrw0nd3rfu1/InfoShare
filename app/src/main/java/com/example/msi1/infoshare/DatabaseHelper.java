@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, PHONE INTEGER, EMAIL TEXT, PROFILEPIC TEXT)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, PHONE INTEGER, EMAIL TEXT, PROFILEPIC BLOB)");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData(String name, String phone, String email, String profilepic){
+    public boolean insertData(String name, String phone, String email, byte[] profilepic){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
@@ -56,11 +56,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public Cursor getAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("select * from "+ TABLE_NAME ,null);
+        String query = "SELECT  * FROM " + TABLE_NAME;
+        Cursor res = sqLiteDatabase.rawQuery(query, null);
         return res;
     }
 
-    public boolean updateData(String id, String name, String phone, String email,String profilepic){
+    public boolean updateData(String id, String name, String phone, String email,byte[] profilepic){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);

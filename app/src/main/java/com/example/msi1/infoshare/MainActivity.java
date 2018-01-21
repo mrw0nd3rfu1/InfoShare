@@ -3,6 +3,8 @@ package com.example.msi1.infoshare;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -80,10 +82,14 @@ public class MainActivity extends AppCompatActivity {
         Cursor res = myDb.getAllData();
 
         if (res.getCount()!= 0){
-            res.moveToFirst();
-            mNameText.setText(res.getString(1));
-            mPhoneText.setText(res.getString(2));
-            mMailText.setText(res.getString(3));
+            if (res.moveToFirst()) {
+                mNameText.setText(res.getString(1));
+                mPhoneText.setText(res.getString(2));
+                mMailText.setText(res.getString(3));
+                byte[] profileImage = res.getBlob(4);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(profileImage, 0, profileImage.length);
+                mProfileImage.setImageBitmap(bitmap);
+            }
         }
     }
 }
